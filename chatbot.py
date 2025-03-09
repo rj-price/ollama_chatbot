@@ -15,6 +15,11 @@ def get_models():
             models_list.append(model)
     return models_list
 
+def stream_response(stream):
+    for chunk in stream:
+        yield chunk['message']['content']
+        
+
 st.set_page_config(
     page_title="Ollama Chatbot",
     initial_sidebar_state="expanded"
@@ -30,17 +35,22 @@ st.title("Ollama Chatbot")
 user_input = st.text_input("Enter question: ", "")
 
 if user_input:
-    try:
-        response = ollama.chat(
-            model=MODEL,
-            messages=[{'role': 'user', 'content': user_input}]
-        )
-   
-        st.markdown("**Assistant:**")
-        st.write(response['message']['content'])
-            
-    except Exception as e:
-        st.error(f"An error occurred: {str(e)}")
+    with st.spinner("Generating response..."):
+        try:
+            stream = ollama.chat(
+                model=MODEL,
+                messages=[{'role': 'user', 'content': user_input}],
+                stream=True
+            )
+    
+            st.markdown("**Assistant:**")
+            st.write_stream(stream_response(stream))
+                
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
 else:
     st.info("Enter a question to get started.")
 
+
+
+    
