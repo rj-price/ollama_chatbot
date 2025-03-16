@@ -1,24 +1,8 @@
 import ollama
 import streamlit as st
+from utils.get_models import get_models
+from utils.stream_response import stream_response
 
-def get_models():
-    models_dict = ollama.list()['models']
-    models_num = len(models_dict)
-    models_list = []
-    for i in range(models_num):
-        model = models_dict[i]['model']
-        if 'latest' in model:
-            models_list.append(model.split(':')[0])
-        elif 'embed' in model:
-            continue
-        else:
-            models_list.append(model)
-    return models_list
-
-def stream_response(stream):
-    for chunk in stream:
-        yield chunk['message']['content']
-        
 def main():
     st.set_page_config(
         page_title="Ollama Chatbot",
