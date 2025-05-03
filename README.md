@@ -75,6 +75,4 @@ This application provides a user-friendly web interface to interact with local L
 
 ## Limitations
 
-- The application maintains conversation history only for the current session
 - There is no context window management, so long conversations may exceed model context limits
-- Each message is treated independently (no conversation context is maintained between messages)

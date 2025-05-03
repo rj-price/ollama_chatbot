@@ -2,6 +2,7 @@ import ollama
 
 
 def get_models():
+    """Get the list of available models from Ollama."""
     models_dict = ollama.list()["models"]
     models_num = len(models_dict)
     models_list = []
