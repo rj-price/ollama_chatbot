@@ -2,6 +2,9 @@
 
 A simple, interactive web interface for chatting with Ollama language models using Streamlit.
 
+<center><img src="img/chatbot.png" alt="Screenshot of Chatbot interface" width="800"/></center>
+
+
 ## Overview
 
 This application provides a user-friendly web interface to interact with local LLMs through the Ollama API. It features:
