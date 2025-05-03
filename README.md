@@ -21,8 +21,15 @@ This application provides a user-friendly web interface to interact with local L
 
 ## Installation
 
-1. Ensure Ollama is installed and running on your system
-   - Visit [Ollama's website](https://ollama.ai/) for installation instructions
+1. Install Ollama and download a small model for testing (instructions for Linux systems below)
+   - Visit [Ollama's website](https://ollama.ai/) for installation instructions for other systems
+   ```bash
+   # Install Ollama
+   curl -fsSL https://ollama.com/install.sh | sh
+
+   # Pull a small model for testing
+   ollama pul gemma3:1b
+   ```
 
 2. Install the required Python packages:
    ```bash
@@ -31,7 +38,10 @@ This application provides a user-friendly web interface to interact with local L
    pip install -r requirements.txt
    ```
 
-3. Clone this repository or download the script.
+3. Clone this repository.
+   ```bash
+   git clone https://github.com/rj-price/ollama_chatbot.git
+   ```
 
 ## Usage
 
